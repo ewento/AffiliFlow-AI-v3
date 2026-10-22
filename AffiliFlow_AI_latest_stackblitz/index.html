@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AffiliFlow AI — Affiliate Content Studio</title>
+  <meta name="description" content="Cipta content affiliate, daily content journey dan prompt video dengan AffiliFlow AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar container">
+    <a class="brand" href="/" aria-label="AffiliFlow AI home"><span class="brand-mark">A</span><span>AffiliFlow <b>AI</b></span></a>
+    <div class="topbar-actions"><span class="workspace-pill"><i></i> AI Content Workspace</span><button class="reset-button" type="button" onclick="clearForm()">Reset</button><button class="icon-button" type="button" onclick="openSupport()" aria-label="Buka bantuan">?</button></div>
+  </header>
+
+  <main class="container app-shell">
+    <section class="hero-panel">
+      <div class="eyebrow">AFFILIATE CONTENT OS <span>v11</span></div>
+      <h1>Satu produk.<br><em>Satu hari</em> penuh content.</h1>
+      <p>Rancang cerita, daily content journey dan prompt video yang natural — semuanya dalam satu ruang kerja.</p>
+      <div class="hero-stats"><span><b>10</b> story content</span><span><b>6</b> daily journey</span><span><b>3</b> video concept</span></div>
+    </section>
+
+    <section class="workspace-card" aria-labelledby="product-heading">
+      <div class="section-heading"><div><span class="step-number">01</span><div><p class="eyebrow">PRODUCT INTELLIGENCE</p><h2 id="product-heading">Kenalkan produk anda</h2></div></div><span class="section-hint">AI akan gunakan maklumat ini sebagai sumber rujukan.</span></div>
+      <div class="form-section">
+        <div class="form-section-title"><span class="section-icon">✦</span><div><h3>Gambar & identiti produk</h3><p>Upload sehingga 5 gambar yang jelas.</p></div></div>
+        <label class="upload-zone" for="productImages"><input type="file" id="productImages" accept="image/*" multiple><span class="upload-icon">↥</span><strong>Drop gambar produk di sini</strong><small>atau klik untuk pilih · JPG, PNG · maksimum 5</small></label>
+        <div id="productGallery" class="product-gallery"></div><div id="productCount" class="field-note"></div>
+        <div class="form-grid two-col compact-top"><label>Nama produk / tajuk<input id="name" type="text" placeholder="Contoh: Mini Massage Gun"></label><label>Harga produk (RM)<input id="price" type="text" placeholder="Contoh: 49.90"></label></div>
+      </div>
+      <div class="form-section split-section">
+        <div class="form-section-title"><span class="section-icon">◎</span><div><h3>Maklumat untuk suara content</h3><p>Lebih tepat input, lebih natural output.</p></div></div>
+        <div class="form-grid two-col"><label>Nama pengguna <span class="optional">PILIHAN</span><input id="creatorName" type="text" placeholder="Contoh: Abang Ahmad"><span class="field-note">Akan digunakan secara selektif sebagai suara pencerita, bukan dalam setiap post.</span></label><label>Sasaran audiens<input id="target" type="text" placeholder="Contoh: Orang bekerja 25–40 tahun"></label></div>
+        <label>Penerangan produk / niche<textarea id="productDescription" rows="3" placeholder="Apa produk ini? Siapa yang mungkin berminat? Tulis dalam bahasa anda sendiri."></textarea></label>
+        <label>3 poin jualan utama<input id="points" type="text" placeholder="Contoh: compact, mudah dibawa, reka bentuk ringkas"></label>
+        <label>Pautan affiliate <span class="required">WAJIB</span><input id="affiliateUrl" type="url" placeholder="https://..."></label>
+      </div>
+      <details class="advanced-settings"><summary><span>⚙</span> Tetapan lanjutan & gaya visual</summary>
+        <div class="form-grid three-col advanced-grid"><label>Gaya penulisan<select id="style"><option value="santai">Santai & mesra</option><option value="profesional">Profesional</option><option value="mendesak">Mendesak</option></select></label><label>Gaya video<select id="videoStyle"><option value="cinematic">Cinematic</option><option value="ugc">UGC</option><option value="animasi">Animasi ringkas</option></select></label><label>Jenis adegan<select id="sceneType"><option value="realistik">Realistik</option><option value="studio">Latar studio</option><option value="luaran">Luaran / outdoor</option></select></label><label>Latar baharu<select id="newBackground"><option value="Modern Malaysian home">Rumah moden Malaysia</option><option value="Minimal studio">Studio minimal</option><option value="Outdoor urban">Outdoor urban</option><option value="Custom background">Custom</option></select></label><label>Custom background<input id="customBackground" type="text" placeholder="Contoh: dapur rumah waktu pagi"></label><label>Tempoh video<input id="duration" type="text" placeholder="8s per clip"></label></div>
+        <div class="checks"><label><input id="removeBgText" type="checkbox"> Buang text promosi di latar</label><label><input id="removeBgGraphics" type="checkbox"> Buang grafik latar</label><label><input id="protectProductText" type="checkbox" checked> Kekalkan text / logo produk</label></div>
+        <div class="form-grid two-col reference-grid"><label>Character reference <input id="characterImage" type="file" accept="image/*"><span class="field-note">Gunakan watak konsisten untuk prompt video.</span></label><div id="characterPreview" class="character-preview"></div></div>
+        <label>Slash commands pilihan<textarea id="slashCommands" rows="2" placeholder="Contoh: /ugcHandheld&#10;/naturalLight"></textarea></label>
+      </details>
+      <div id="intelStatus" class="status-line" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="workspace-card content-workspace" aria-labelledby="content-heading">
+      <div class="section-heading"><div><span class="step-number">02</span><div><p class="eyebrow">CONTENT WORKSPACE</p><h2 id="content-heading">Pilih apa yang mahu dijana</h2></div></div><span class="section-hint">Setiap tab boleh dijana semula secara berasingan.</span></div>
+      <div class="workspace-tabs" role="tablist" aria-label="Content output tabs"><button type="button" class="workspace-tab active" data-act="tab" data-tab="story" role="tab"><span>01</span><b>Story Content</b><small>10 ikut waktu</small></button><button type="button" class="workspace-tab" data-act="tab" data-tab="problem" role="tab"><span>02</span><b>Daily Journey</b><small>6 bahagian sehari</small></button><button type="button" class="workspace-tab" data-act="tab" data-tab="video" role="tab"><span>03</span><b>Video Prompt</b><small>3 konsep dinamik</small></button></div>
+      <div class="generate-row"><div><p class="active-output-label">Output aktif: <strong>Story Content</strong></p><p class="field-note">Upload gambar dan lengkapkan maklumat produk sebelum menjana.</p></div><button class="btn btn-primary" data-act="generate-tab" data-tab="story"><span>✦</span> Jana content</button></div>
+      <div id="results" class="results-shell" style="min-height:200px"><div class="empty-state"><div class="empty-orb">✦</div><h3>Ruang kerja anda menunggu</h3><p>Hasil penjanaan AI akan muncul di sini mengikut tab yang dipilih.</p></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer container"><div><a class="brand footer-brand" href="/"><span class="brand-mark">A</span><span>AffiliFlow <b>AI</b></span></a><p>Content affiliate yang lebih natural, setiap hari.</p></div><nav><a href="about.html">Tentang Kami</a><a href="panduan-affiliate.html">Panduan</a><a href="contact.html">Hubungi</a><a href="privacy.html">Privasi</a><a href="terms.html">Terma</a></nav><small>© 2026 AffiliFlow AI</small></footer>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="supportModal" class="modal" onclick="closeSupport(event)" aria-hidden="true"><div class="modal-card"><button class="modal-close" type="button" onclick="closeSupport()">×</button><p class="eyebrow">SUPPORT</p><h2>Perlukan bantuan?</h2><p>Lengkapkan maklumat produk, upload sekurang-kurangnya satu gambar dan pilih output yang anda perlukan. Untuk isu API, semak GEMINI_API_KEY pada deployment anda.</p><a class="btn btn-primary" href="contact.html">Hubungi kami</a></div></div>
+  <script defer src="content-validator.js"></script><script defer src="app.js"></script>
+</body>
+</html>
